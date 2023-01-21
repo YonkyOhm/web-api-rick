@@ -1,0 +1,28 @@
+<!-- Contenedor de episodios -->
+<section class="content">
+    <h2 class="content-title">Episodios</h2>
+    <!-- Articulo -->
+    <h2>Episodios selecionados</h2>
+    <article class="post" *ngFor="let episodio of episodios | ObjToArray">
+        <header class="header-post">
+            <div >
+                <p>Emision: {{episodio.air_date}}</p>
+                <p>Nombre del episodio: {{episodio.name}}</p>
+                <p>Episodio: {{episodio.episode}}</p>
+            </div>
+        </header>
+
+        <!-- Barra de personajes -->
+    <aside class="asidebar" *ngFor="let personaje of personajes">
+        <header class="aside-header">
+            <h2>Personaje</h2>
+        </header>
+        <P>{{personaje.name}}</P>
+        
+        <button (click)="getComponent()">
+            Mas informacion
+        </button>
+    </aside>
+    </article>
+
+    

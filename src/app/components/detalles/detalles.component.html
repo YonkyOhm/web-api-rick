@@ -1,0 +1,12 @@
+
+<aside class="asidebar" *ngFor="let personaje of personajes | ObjToArray">
+    <header class="aside-header">
+        <h2>Personaje</h2>
+    </header>
+    <img src="{{personaje.image}}" >
+    <P>Name: {{personaje.name}}</P>
+    <P>Status: {{personaje.status}}</P>
+    <P>Species: {{personaje.species}}</P>
+    <P>Gender:{{personaje.gender}}</P>
+    
+</aside>

@@ -18,4 +18,9 @@ export class ApiServiceService {
   getPersonajes(){
     return this.http.get(this.urlP);
   }
+
+  getEpisodiosId(){
+    return this.http.get(this.url)
+  }
+ 
 }
