@@ -20,7 +20,7 @@ export class FormularioComponent implements OnInit{
 
     this.service.getEpisodios().subscribe(
       (res: any) => {
-        this.episodios = res.results
+        this.episodios = res
         console.log(res)
       }
     )

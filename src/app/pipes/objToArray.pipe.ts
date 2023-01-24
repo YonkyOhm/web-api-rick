@@ -11,4 +11,6 @@ export class ObjToArrayPipe implements PipeTransform{
         return Object.values(object);
 
     }
+
+    
 }

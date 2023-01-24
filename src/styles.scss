@@ -11,7 +11,8 @@
     margin:0;
     padding:0;
     font-family: sans-serif;
-    background: linear-gradient(#141e30, #243b55);
+    //background: linear-gradient(#141e30, #243b55);
+    background: linear-gradient(#cbd9f3, #3f84d3);
   }
   
   .login-box {
@@ -259,3 +260,103 @@
   }
   
  
+  //Ultima tarjeta 
+  @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;900&display=swap");
+
+* {
+	font-family: "Raleway", sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+}
+
+h1 {
+	text-align: center;
+	padding: 1rem;
+}
+
+
+
+section {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 1rem;
+	margin-bottom: 2rem;
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 1rem;
+}
+
+.item {
+	grid-row: 1/4;
+	display: grid;
+	grid-template-rows: subgrid;
+	background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+	border-radius: 1rem;
+	padding-bottom: 1rem;
+
+	h3 {
+		grid-row-start: 1;
+		grid-row-end: 2;
+		font-weight: 900;
+		padding: 1rem 0.5rem 0 0.5rem;
+	}
+
+	p {
+		grid-row-start: 3;
+		grid-row-end: 4;
+		padding: 0 0.5rem;
+	}
+
+	img {
+		grid-row-start: 2;
+		grid-row-end: 3;
+		max-width: 100%;
+	}
+
+	&.feature {
+		grid-row: auto;
+		grid-template-columns: 2fr 1fr;
+		grid-template-rows: auto 1fr;
+		grid-column-start: 1;
+		grid-column-end: 4;
+		background: #3c3b3f; /* fallback for old browsers */
+		background: -webkit-linear-gradient(
+			to right,
+			#605c3c,
+			#3c3b3f
+		); /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(
+			to right,
+			#605c3c,
+			#3c3b3f
+		); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		padding: 30px;
+		overflow: hidden;
+		grid-column-gap: 1rem;
+		justify-content: space-arround;
+		color: white;
+
+		h3 {
+			grid-column-start: 1;
+			grid-column-end: 2;
+			grid-row-start: 1;
+			grid-row-end: 2;
+			padding: 1rem 0 0 0.5rem;
+		}
+
+		p {
+			grid-column-start: 1;
+			grid-column-end: 2;
+			grid-row-start: 2;
+			grid-row-end: 4;
+			padding: 1rem 0 1rem 0.5rem;
+		}
+
+		img {
+			grid-column-start: 2;
+			grid-column-end: 3;
+			grid-row-start: 1;
+			grid-row-end: 3;
+		}
+	}
+}
