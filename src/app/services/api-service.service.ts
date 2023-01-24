@@ -44,6 +44,7 @@ export class ApiServiceService {
       const urlArr2= rick.url.split('/');
       const id = urlArr2[5];
       console.log(urlArr2)
+      
       const pic = `https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`
       return {
         id: id,

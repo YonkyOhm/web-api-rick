@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetallesComponent } from './components/detalles/detalles.component';
 import { EpisodiosComponent } from './components/episodios/episodios.component';
-import { FormularioComponent } from './components/formulario/formulario.component';
 import { MortyListComponent } from './rick/morty-list/morty-list.component';
 
 const routes: Routes = [

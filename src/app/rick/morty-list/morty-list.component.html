@@ -2,12 +2,12 @@
 <h1>Episodios</h1>
 
 <section>
-    <input type="text" class="form-control mb-2" 
-    placeholder="Episodio" #txtSearch
-    (keyup)="onSearchEpisodio(txtSearch.value)">
-	<div class="item feature" *ngFor="let episodio of morty | filtro:page:search">
-		<h3>{{episodio.name}}</h3>
-		<p>{{episodio.id}}, {{episodio.episode}}, {{episodio.episodes}},  </p>
+    <input type="text" class="form-control mb-2" placeholder="Episodio" #txtSearch (keyup)="onSearchEpisodio(txtSearch.value)">
+
+
+	<div class="item feature" *ngFor="let episodio of morty | filtro:page:search" >
+		<h3>{{episodio.id}}. {{episodio.name}}</h3>
+        <p>{{episodio.episode}}, {{episodio.air_date}}, </p>
        
 	</div>
     <section>
