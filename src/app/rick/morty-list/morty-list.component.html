@@ -8,17 +8,16 @@
 	<div class="item feature" *ngFor="let episodio of morty | filtro:page:search" >
 		<h3>{{episodio.id}}. {{episodio.name}}</h3>
         <p>{{episodio.episode}}, {{episodio.air_date}}, </p>
-       
+        
 	</div>
     <section>
         <div class="item" *ngFor="let personaje of rick">
-            <h3>Personajes</h3>
+            <h3>Personaje</h3>
             <p>{{personaje.name}}</p>
-            <img  [src]="personaje.pic">
+            <!--<img  [src]="personaje.pic">-->
             <button (click)="getDeatlles()">Mas Informacion</button>
         </div>
-    </section>
-        
+    </section>  
 </section>
 
 
