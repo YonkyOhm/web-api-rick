@@ -37,4 +37,8 @@ export class MortyListComponent implements OnInit{
     this.search = search;
   }
 
+  getDeatlles(){
+    this.route.navigateByUrl(`detalles`)
+  }
+
 }

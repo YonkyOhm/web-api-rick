@@ -1,9 +1,9 @@
 
-<aside class="asidebar" *ngFor="let personaje of personajes | ObjToArray">
+<aside class="asidebar" *ngFor="let personaje of rick">
     <header class="aside-header">
         <h2>Personaje</h2>
     </header>
-    <img src="{{personaje.image}}" >
+    <img [src]="personaje.pic" >
     <P>Name: {{personaje.name}}</P>
     <P>Status: {{personaje.status}}</P>
     <P>Species: {{personaje.species}}</P>
