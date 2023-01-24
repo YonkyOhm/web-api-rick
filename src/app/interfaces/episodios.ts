@@ -25,4 +25,5 @@ export interface Episodios {
     air_date: string,
     name: string,
     episode: string,
+    characters: string[]
 }

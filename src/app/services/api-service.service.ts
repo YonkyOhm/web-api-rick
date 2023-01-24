@@ -28,6 +28,7 @@ export class ApiServiceService {
         episode: morty.air_date,
         name: morty.name,
         episodes: morty.episode,
+        characters: morty.characters
       };
     });
     return mortyList;
@@ -44,7 +45,7 @@ export class ApiServiceService {
       const urlArr2= rick.url.split('/');
       const id = urlArr2[5];
       console.log(urlArr2)
-      
+
       const pic = `https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`
       return {
         id: id,
@@ -52,7 +53,9 @@ export class ApiServiceService {
         status: rick.status,
         specie: rick.species,
         gender: rick.gender,
+        episode: rick.episode,
         pic
+
       };
     });
     return rickList;
