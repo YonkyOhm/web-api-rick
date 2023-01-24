@@ -26,8 +26,14 @@ export class MortyListComponent implements OnInit{
     )
 
     this.mortyService.getPersonajes().subscribe(
-      resp => {
-        this.rick = resp
+      (resp:any) => {
+        this.rick = resp.filter(({id}: {id: number }) => {
+          if(id >= 6 ){
+           return true
+         }else{
+          return false
+         } 
+         })
       }
     )
   }

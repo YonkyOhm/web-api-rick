@@ -49,6 +49,7 @@ export enum Status {
 }
 
 export interface Personajes {
+    id: number,
     image: string,
     name: string,
     status: Status,
