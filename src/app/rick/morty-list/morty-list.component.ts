@@ -1,53 +1,72 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Episodios } from 'src/app/interfaces/episodios';
+import {
+  AllEpisodeRespon,
+  Episodios,
+  Result,
+} from 'src/app/interfaces/episodios';
 
 @Component({
   selector: 'app-morty-list',
   templateUrl: './morty-list.component.html',
-  styleUrls: ['./morty-list.component.scss']
+  styleUrls: ['./morty-list.component.scss'],
 })
-export class MortyListComponent implements OnInit{
-
-  page: number = 0
+export class MortyListComponent implements OnInit {
+  page: number = 0;
   search: string = '';
- 
-  morty: Array<any>
-  rick: Array<any>
 
-  constructor(private mortyService: ApiServiceService, private route: Router, private activated: ActivatedRoute){
-    this.morty = []
-    this.rick = []
-  
+  morty: Array<any>;
+  rick: Array<any>;
+
+  constructor(
+    private mortyService: ApiServiceService,
+    private route: Router,
+    private activated: ActivatedRoute
+  ) {
+    this.morty = [];
+    this.rick = [];
   }
   ngOnInit(): void {
-    this.mortyService.getEpisodios().subscribe(
-      resp => {
-        this.morty = resp
+    // this.mortyService.getPersonajes().subscribe(
+    //   (resp:any) => {
+    //     this.rick = resp.filter(({id}: {id: number }) => {
+    //       if(id >= 6 ){
+    //        return true
+    //      }else{
+    //       return false
+    //      }
+    //      })
+    //   }
+    // )
+  }
+
+  listarEp(inicio: string, final: string) {
+    let n = Number(inicio);
+    let m = Number(final);
+   
+    if (!Number.isNaN(n) && n > 0 && !Number.isNaN(m) && m > 0) {
+      if (n > m) {
+        [n, m] = [m, n];
       }
-    )
-
-    this.mortyService.getPersonajes().subscribe(
-      (resp:any) => {
-        this.rick = resp.filter(({id}: {id: number }) => {
-          if(id >= 6 ){
-           return true
-         }else{
-          return false
-         } 
-         })
-      }
-    )
+      this.mortyService.getEpisodiosInRange(n, m).subscribe(
+        (resp: any) => {
+          this.morty = resp.map((episodio: Result) => {
+            return {
+              id: episodio.id,
+              nombre: episodio.name,
+              emision: episodio.air_date,
+              personajes: episodio.characters.sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(0, 3),
+              
+            };
+          }); 
+        },
+        (err) => {}
+      );
+    }
   }
-
-  onSearchEpisodio(search: string){
-    this.page = 0;
-    this.search = search;
+  
+  getDeatlles() {
+    this.route.navigateByUrl(`detalles`);
   }
-
-  getDeatlles(){
-    this.route.navigateByUrl(`detalles`)
-  }
-
 }

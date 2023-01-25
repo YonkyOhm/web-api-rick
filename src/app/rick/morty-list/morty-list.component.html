@@ -1,20 +1,27 @@
-
 <div class="content">
-    <h1>Episodios</h1>
-    <input type="text" class="form-control mb-2" placeholder="Episodio" #txtSearch (keyup)="onSearchEpisodio(txtSearch.value)">
-    <div class="description">
-	<ul class="team">
-		<li class="member co-funder" *ngFor="let episodio of morty | filtro:page:search ">
-			<div class="description">
-				<h3>{{episodio.id}}, {{episodio.name}}</h3>
-                <p>{{episodio.air_date}}</p>
-				<p><br>{{episodio.episode}}</p>
-                <p>{{episodio.characters}}</p>
-			</div>
-		</li>
-	</ul>
-    </div>
+	<h1>Episodios</h1>
+	<div class="number-input">
+		<input type="number" #inicio>
+		<input type="number" #final>
+		<button (click)="listarEp(inicio.value, final.value)">Listar Episodios</button>
+	</div>
+
+	<div class="description">
+		<ul class="team">
+			<li class="member co-funder" *ngFor="let episodio of morty">
+				<div class="description">
+					<h3>{{episodio.id}}, {{episodio.nombre}}</h3>
+					<p>{{episodio.emision}}</p>
+					<p><br>{{episodio.personajes}}</p>
+					<button
+						(click)="getDeatlles()">Mas informacion
+					</button>
+				</div>
+			</li>
+		</ul>
+	</div>
 </div>
+
 <!--Otro contenido-->
 <div class="content">
 
@@ -23,11 +30,10 @@
 			<div class="thumb"><img [src]="personaje.pic"></div>
 			<div class="description">
 				<h3>{{personaje.name}}</h3>
-				<p>Si quieres mas informacion del presonaje solo da click en el boton<br><button (click)="getDeatlles()">Mas informacion</button></p>
+				<p>Si quieres mas informacion del presonaje solo da click en el boton<br><button
+						(click)="getDeatlles()">Mas informacion</button></p>
 			</div>
 		</li>
 	</ul>
 
 </div>
-
-
