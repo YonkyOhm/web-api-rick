@@ -31,4 +31,8 @@ export class DetallesComponent implements OnInit{
     );
   }
 
+  getDeatlles(){
+    this.route.navigateByUrl(`home`)
+  }
+
 }

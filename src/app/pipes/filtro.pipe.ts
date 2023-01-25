@@ -9,9 +9,9 @@ export class FiltroPipe implements PipeTransform {
     
     if (search.length === 0) return filtro.slice(page, page + 10);
 
-    const filter = filtro.filter((morty) =>
-      morty.name.includes(search)
-    );
+    const filter = filtro.filter((morty) => morty.name.includes(search));
     return filter.slice(page, page + 5);
+
+
   }
 }

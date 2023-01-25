@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Episodios } from 'src/app/interfaces/episodios';
 
 @Component({
   selector: 'app-morty-list',
@@ -11,12 +12,14 @@ export class MortyListComponent implements OnInit{
 
   page: number = 0
   search: string = '';
+ 
   morty: Array<any>
   rick: Array<any>
 
   constructor(private mortyService: ApiServiceService, private route: Router, private activated: ActivatedRoute){
     this.morty = []
     this.rick = []
+  
   }
   ngOnInit(): void {
     this.mortyService.getEpisodios().subscribe(

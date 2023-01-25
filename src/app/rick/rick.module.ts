@@ -10,6 +10,7 @@ import { FiltroPipe } from '../pipes/filtro.pipe';
   declarations: [
     MortyListComponent,
     FiltroPipe,
+    
   ],
   imports: [
     CommonModule,

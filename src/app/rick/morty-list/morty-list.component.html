@@ -4,7 +4,7 @@
     <input type="text" class="form-control mb-2" placeholder="Episodio" #txtSearch (keyup)="onSearchEpisodio(txtSearch.value)">
     <div class="description">
 	<ul class="team">
-		<li class="member co-funder" *ngFor="let episodio of morty | filtro:page:search">
+		<li class="member co-funder" *ngFor="let episodio of morty | filtro:page:search ">
 			<div class="description">
 				<h3>{{episodio.id}}, {{episodio.name}}</h3>
                 <p>{{episodio.air_date}}</p>
@@ -19,7 +19,7 @@
 <div class="content">
 
 	<ul class="team">
-		<li class="member co-funder" *ngFor="let personaje of rick">
+		<li class="member co-funder" *ngFor="let personaje of rick ">
 			<div class="thumb"><img [src]="personaje.pic"></div>
 			<div class="description">
 				<h3>{{personaje.name}}</h3>
