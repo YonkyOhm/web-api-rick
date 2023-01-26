@@ -52,20 +52,22 @@ export class MortyListComponent implements OnInit {
       this.mortyService.getEpisodiosInRange(n, m).subscribe(
         (resp: any) => {
           this.morty = resp.map((episodio: Result) => {
+           
             return {
               id: episodio.id,
               nombre: episodio.name,
               emision: episodio.air_date,
-              personajes: episodio.characters.sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(0, 3),
-              
+              temporada: episodio.episode,
+              personajes: episodio.characters.sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(6, 9) 
             };
           }); 
         },
         (err) => {}
       );
+      
     }
   }
-  
+
   getDeatlles() {
     this.route.navigateByUrl(`detalles`);
   }

@@ -12,7 +12,8 @@
 				<div class="description">
 					<h3>{{episodio.id}}, {{episodio.nombre}}</h3>
 					<p>{{episodio.emision}}</p>
-					<p><br>{{episodio.personajes}}</p>
+					<p>{{episodio.temporada}}</p>
+					<p>{{episodio.personajes}}</p>
 					<button
 						(click)="getDeatlles()">Mas informacion
 					</button>
@@ -30,7 +31,7 @@
 			<div class="thumb"><img [src]="personaje.pic"></div>
 			<div class="description">
 				<h3>{{personaje.name}}</h3>
-				<p>Si quieres mas informacion del presonaje solo da click en el boton<br><button
+				<p>Si quieres mas informacion del personaje solo da click en el boton<br><button
 						(click)="getDeatlles()">Mas informacion</button></p>
 			</div>
 		</li>
