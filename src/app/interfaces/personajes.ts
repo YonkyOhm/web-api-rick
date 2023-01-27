@@ -1,7 +1,7 @@
 
 export interface AllPersonajesRespon {
     info:    Info;
-    results: Result[];
+    results: ResultP[];
 }
 
 export interface Info {
@@ -11,7 +11,7 @@ export interface Info {
     prev:  null;
 }
 
-export interface Result {
+export interface ResultP {
     id:       number;
     name:     string;
     status:   Status;

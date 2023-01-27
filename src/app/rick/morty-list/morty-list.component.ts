@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  AllEpisodeRespon,
-  Episodios,
-  Result,
-} from 'src/app/interfaces/episodios';
+import { Character, Episodios, Result } from 'src/app/interfaces/episodios';
+
 
 @Component({
   selector: 'app-morty-list',
@@ -13,9 +10,8 @@ import {
   styleUrls: ['./morty-list.component.scss'],
 })
 export class MortyListComponent implements OnInit {
-  page: number = 0;
-  search: string = '';
 
+  pers: Character[]
   morty: Array<any>;
   rick: Array<any>;
 
@@ -26,6 +22,7 @@ export class MortyListComponent implements OnInit {
   ) {
     this.morty = [];
     this.rick = [];
+    this.pers = []
   }
   ngOnInit(): void {
     // this.mortyService.getPersonajes().subscribe(
@@ -51,24 +48,30 @@ export class MortyListComponent implements OnInit {
       }
       this.mortyService.getEpisodiosInRange(n, m).subscribe(
         (resp: any) => {
+          
           this.morty = resp.map((episodio: Result) => {
-           
+            
             return {
               id: episodio.id,
               nombre: episodio.name,
               emision: episodio.air_date,
               temporada: episodio.episode,
-              personajes: episodio.characters.sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(6, 9) 
+              personajes: episodio.characters.sort(() => (Math.random() > 0.5 ? 1 : -1)).slice(6, 9),
+              
             };
           }); 
+
+         
         },
         (err) => {}
       );
       
     }
+
   }
 
   getDeatlles() {
-    this.route.navigateByUrl(`detalles`);
+    this.route.navigateByUrl(`detalles/${this.pers}`);
+
   }
 }

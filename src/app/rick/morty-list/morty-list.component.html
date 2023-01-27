@@ -14,14 +14,22 @@
 					<p>{{episodio.emision}}</p>
 					<p>{{episodio.temporada}}</p>
 					<p>{{episodio.personajes}}</p>
-					<button
-						(click)="getDeatlles()">Mas informacion
-					</button>
+					
+					<div class="card-body">
+						<h5 class="card-title pl-3">{{episodio.p1}}</h5>
+						<p class="card-text text-muted pl-3">{{episodio.p2}}</p>
+						<button routerLInk="['detalles/',character.id]">mas informacion</button>
+					</div>
 				</div>
+
+				
+				 
 			</li>
 		</ul>
 	</div>
 </div>
+
+
 
 <!--Otro contenido-->
 <div class="content">
@@ -37,4 +45,20 @@
 		</li>
 	</ul>
 
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4"
+         *ngFor="let character of pers">
+        <div class="card mb-3 border">
+            <img [src]="character.image"
+                 [alt]="character.name"
+                 class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title pl-3">{{character.name | slice: 0:30}}</h5>
+                <p class="card-text text-muted pl-3">{{character.species}}</p>
+                
+            </div>
+        </div>
+    </div>
 </div>

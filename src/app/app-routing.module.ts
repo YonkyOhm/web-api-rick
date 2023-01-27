@@ -5,7 +5,7 @@ import { MortyListComponent } from './rick/morty-list/morty-list.component';
 
 const routes: Routes = [
   {path: 'home', component: MortyListComponent},
-  {path: 'detalles', component: DetallesComponent},
+  {path: 'detalles/:id', component: DetallesComponent},
   {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 

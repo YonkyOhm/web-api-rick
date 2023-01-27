@@ -1,3 +1,5 @@
+import { Gender, Species, Status } from "./personajes";
+
 export interface AllEpisodeRespon {
     info:    Info;
     results: Result[];
@@ -8,7 +10,18 @@ export interface Info {
     pages: number;
     next:  string;
     prev:  null;
+
 }
+
+type fecha = string
+// type characters  = {
+//     id: number,
+//     name: string,
+//     status: Status,
+//     species: Species,
+//     gender: Gender,
+// }
+
 
 export interface Result {
     id:         number;
@@ -17,7 +30,7 @@ export interface Result {
     episode:    string;
     characters: string[];
     url:        string;
-    created:    Date;
+    created:    fecha;
 }
 
 export interface Episodios {
@@ -26,4 +39,14 @@ export interface Episodios {
     name: string,
     episode: string,
     characters: string[]
+}
+
+export interface Character {
+    id: number;
+    name: string;
+    status: string;
+    species: string;
+    gender: string;
+    image: string;
+    created: string
 }

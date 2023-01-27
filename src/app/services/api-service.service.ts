@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AllEpisodeRespon, Result } from '../interfaces/episodios';
+import { AllEpisodeRespon, Character, Result } from '../interfaces/episodios';
 import { map } from 'rxjs';
 import { AllPersonajesRespon } from '../interfaces/personajes';
 
@@ -18,33 +18,11 @@ export class ApiServiceService {
     for (let i = n; i <= m; i++) {
       range += `${i},`;
     }
-    return this.http.get(`${this.url}/${range}`);
-  }
-
-  
-
-  getEpisodios() {
-    return this.http
-      .get<AllEpisodeRespon>(this.url)
-      .pipe(map(this.transformIntoEpisodie));
-  }
-
-  private transformIntoEpisodie(resp: AllEpisodeRespon) {
-    const mortyList = resp.results.map((morty) => {
-      const urlArr = morty.url.split('/');
-      const id = urlArr[5];
-      return {
-        id: id,
-        episode: morty.air_date,
-        name: morty.name,
-        episodes: morty.episode,
-        characters: morty.characters,
-      };
-    });
-    return mortyList;
+    return this.http.get<AllEpisodeRespon>(`${this.url}/${range}`);
   }
 
   getPersonajes() {
+    
     return this.http
       .get<AllPersonajesRespon>(this.urlP)
       .pipe(map(this.transformIntoCharecter));
@@ -69,4 +47,12 @@ export class ApiServiceService {
     });
     return rickList;
   }
+
+
+  getDetails(id: number) {
+    return this.http.get<Character>(`${this.url}/detalles/${id}`)
+  }
+  
 }
+
+
