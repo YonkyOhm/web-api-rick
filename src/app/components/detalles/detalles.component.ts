@@ -7,42 +7,40 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 @Component({
   selector: 'app-detalles',
   templateUrl: './detalles.component.html',
-  styleUrls: ['./detalles.component.scss']
+  styleUrls: ['./detalles.component.scss'],
 })
-export class DetallesComponent implements OnInit{
-  morty: Array<any>
-  rick: Array<any>
+export class DetallesComponent implements OnInit {
+ 
 
-  character$: Observable<Character> | undefined;
-  personajes: any
-  constructor(private service: ApiServiceService, private route:Router, private activated: ActivatedRoute){
-    this.morty = []
-    this.rick = []
+  id: number;
+  character:any = [];
+  
+  constructor(private service: ApiServiceService, private route: Router, private activated: ActivatedRoute) {
+    this.id = 0
+    activated.params.subscribe((prm) => {
+      this.id = prm['id'];
+    });
     
   }
   ngOnInit(): void {
-    // this.service.getPersonajes(n,m).subscribe(
-    //   (resp: any) => {
-      
-    //     this.rick = resp.filter(({id}: { id: number }) => {
-    //        if(id >= 6 ){
-    //         return true
-    //       }else{
-    //        return false
-    //       } 
-    //       })
-    //   }
-    // );
 
-    
-    this.activated.params.pipe(take(1)).subscribe((params) => {
-      const id = params['id'];
-      this.character$ = this.service.getDetails(id);
-    });
+    this.service.getCharacter(this.id)
+        .subscribe(data => {
+            this.character = data;
+    }); 
+
+    // this.service.getPersonajes().subscribe((resp: any) => {
+    //   this.rick = resp.filter(({ id }: { id: number }) => {
+    //     if (id >= 6) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   });
+    // });
   }
 
-  getRegreso(){
-    this.route.navigateByUrl(`home`)
+  getRegreso() {
+    this.route.navigateByUrl(`home`);
   }
-
 }

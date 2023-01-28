@@ -9,16 +9,13 @@
 	<div class="description">
 		<ul class="team">
 			<li class="member co-funder" *ngFor="let episodio of morty">
-				<div class="description">
+				<div class="description">ngFor="let personaje of rick
 					<h3>{{episodio.id}}, {{episodio.nombre}}</h3>
 					<p>{{episodio.emision}}</p>
 					<p>{{episodio.temporada}}</p>
 					<p>{{episodio.personajes}}</p>
-					
 					<div class="card-body">
-						<h5 class="card-title pl-3">{{episodio.p1}}</h5>
-						<p class="card-text text-muted pl-3">{{episodio.p2}}</p>
-						<button routerLInk="['detalles/',character.id]">mas informacion</button>
+						<button (click)="getDeatlles()">mas informacion</button>
 					</div>
 				</div>
 
@@ -47,18 +44,27 @@
 
 </div>
 
-<div class="row">
+<!-- <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4"
-         *ngFor="let character of pers">
+         *ngFor="let character of allCharacter">
         <div class="card mb-3 border">
-            <img [src]="character.image"
-                 [alt]="character.name"
-                 class="card-img-top">
+            <img [src]="character.image" class="card-img-top">
             <div class="card-body">
-                <h5 class="card-title pl-3">{{character.name | slice: 0:30}}</h5>
+                <h5 class="card-title pl-3">{{character.name | slice: 6:30}}</h5>
                 <p class="card-text text-muted pl-3">{{character.species}}</p>
-                
+                <a [routerLink]="['/detalles/',character.id]"></a>
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<!-- <div class="col mb-4">
+    <div class="card h-100" *ngFor="let item of characters">
+        <img [src]="item.image" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{item.name}}</h5>
+            <p class="card-text"></p>
+            <button  (click)="getDeatlles()">See more</button>
+        </div>
+    </div>
+</div> -->

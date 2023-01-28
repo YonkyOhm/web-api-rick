@@ -19,10 +19,10 @@ export class ApiServiceService {
       range += `${i},`;
     }
     return this.http.get<AllEpisodeRespon>(`${this.url}/${range}`);
+    //.pipe(map(this.transformIntoCharecter));
   }
 
   getPersonajes() {
-    
     return this.http
       .get<AllPersonajesRespon>(this.urlP)
       .pipe(map(this.transformIntoCharecter));
@@ -47,12 +47,8 @@ export class ApiServiceService {
     });
     return rickList;
   }
-
-
-  getDetails(id: number) {
-    return this.http.get<Character>(`${this.url}/detalles/${id}`)
-  }
   
+  public getCharacter(id: number) {
+    return this.http.get('https://rickandmortyapi.com/api/character/' + id);
+  }
 }
-
-

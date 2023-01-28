@@ -31,6 +31,7 @@ export interface Result {
     characters: string[];
     url:        string;
     created:    fecha;
+    
 }
 
 export interface Episodios {
@@ -49,4 +50,5 @@ export interface Character {
     gender: string;
     image: string;
     created: string
+    //pic: `https://rickandmortyapi.com/api/character/avatar/${id}.jpeg`;
 }
