@@ -20,7 +20,8 @@ export class DetallesComponent implements OnInit {
     activated.params.subscribe((prm) => {
       this.id = prm['id'];
     });
-    
+
+   
   }
   ngOnInit(): void {
 
@@ -28,18 +29,9 @@ export class DetallesComponent implements OnInit {
         .subscribe(data => {
             this.character = data;
     }); 
-
-    // this.service.getPersonajes().subscribe((resp: any) => {
-    //   this.rick = resp.filter(({ id }: { id: number }) => {
-    //     if (id >= 6) {
-    //       return true;
-    //     } else {
-    //       return false;
-    //     }
-    //   });
-    // });
   }
 
+ 
   getRegreso() {
     this.route.navigateByUrl(`home`);
   }

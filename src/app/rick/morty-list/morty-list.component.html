@@ -9,7 +9,7 @@
 	<div class="description">
 		<ul class="team">
 			<li class="member co-funder" *ngFor="let episodio of morty">
-				<div class="description">ngFor="let personaje of rick
+				<div class="description">
 					<h3>{{episodio.id}}, {{episodio.nombre}}</h3>
 					<p>{{episodio.emision}}</p>
 					<p>{{episodio.temporada}}</p>
@@ -17,10 +17,7 @@
 					<div class="card-body">
 						<button (click)="getDeatlles()">mas informacion</button>
 					</div>
-				</div>
-
-				
-				 
+				</div>			 
 			</li>
 		</ul>
 	</div>
@@ -36,7 +33,8 @@
 			<div class="thumb"><img [src]="personaje.pic"></div>
 			<div class="description">
 				<h3>{{personaje.name}}</h3>
-				<p>Si quieres mas informacion del personaje solo da click en el boton<br><button
+				<p>{{personaje.id}}</p>
+				<p>Si quieres mas informacion del personaje solo da click en el boton<br><button 
 						(click)="getDeatlles()">Mas informacion</button></p>
 			</div>
 		</li>

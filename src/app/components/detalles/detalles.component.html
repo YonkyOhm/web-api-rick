@@ -1,27 +1,26 @@
-
 <div class="a-box">
-    <div class="img-container" >
-      <div class="img-inner">
-        <div class="inner-skew">
-          <img [src]="character.image">
+    <div class="img-container">
+        <div class="img-inner">
+            <div class="inner-skew">
+                <img [src]="character.image">
+            </div>
         </div>
-      </div>
     </div>
     <div class="text-container">
-      <h3>A blue bird</h3>
-      <div>
-        <ul class="list-group">
-            <li class="list-group-item active">{{character.name}}</li>
-            <li class="list-group-item"><strong>Specie:</strong> {{character.species}}</li>
-            <li class="list-group-item"><strong>Gender:</strong> {{character.gender}}</li>
-            <li class="list-group-item"><strong>Status:</strong> {{character.status}}</li>                        
-        </ul>
-        <button  (click)="getRegreso()">Volver a inicio</button>
+
+        <div>
+            <ul class="list-group">
+                <li class="list-group-item active">{{character.name}}</li>
+                <li class="list-group-item"><strong>Specie:</strong> {{character.species}}</li>
+                <li class="list-group-item"><strong>Gender:</strong> {{character.gender}}</li>
+                <li class="list-group-item"><strong>Status:</strong> {{character.status}}</li>
+            </ul>
+            <button (click)="getRegreso()">Volver a inicio</button>
+        </div>
     </div>
-  </div>
 
-
-<!-- 
+   
+    <!-- 
 <div class="asidebar" *ngFor="let personaje of rick">
     <header class="aside-header">
         <h2>Personaje</h2>
@@ -40,7 +39,7 @@
     <button (click)="getRegreso()">Volver a inicio</button>
 </div> -->
 
-<!-- 
+    <!-- 
 <div class="card shadow-sm w-100 mt-5"
      *ngIf="character$ | async as character">
     <h5 class="card-header text-dark bg-warning">{{character.name}}</h5>

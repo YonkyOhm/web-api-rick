@@ -14,13 +14,13 @@ export interface Info {
 }
 
 type fecha = string
-// type characters  = {
-//     id: number,
-//     name: string,
-//     status: Status,
-//     species: Species,
-//     gender: Gender,
-// }
+type characters  = {
+    id: number,
+    name: string,
+    status: Status,
+    species: Species,
+    gender: Gender,
+}
 
 
 export interface Result {
@@ -34,6 +34,7 @@ export interface Result {
     
 }
 
+
 export interface Episodios {
     id: number,
     air_date: string,
@@ -44,7 +45,7 @@ export interface Episodios {
 
 export interface Character {
     id: number;
-    name: string;
+    name: string[];
     status: string;
     species: string;
     gender: string;

@@ -9,9 +9,11 @@ import { Character, Result } from 'src/app/interfaces/episodios';
   styleUrls: ['./morty-list.component.scss'],
 })
 export class MortyListComponent implements OnInit {
- 
   morty: Array<any>;
   rick: Array<any>;
+  
+  id: number;
+  character: any = [];
 
   constructor(
     private mortyService: ApiServiceService,
@@ -20,28 +22,41 @@ export class MortyListComponent implements OnInit {
   ) {
     this.morty = [];
     this.rick = [];
-    //let id = this.activated.snapshot.paramMap.get('id') || '';
-   
-  }
-  ngOnInit(): void {
-    // this.mortyService.getPersonajes().subscribe((resp: any) => {
-    //   this.rick = resp.filter(({ id }: { id: number }) => {
-    //     if (id >= 6) {
-    //       return true;
-    //     } else {
-    //       return false;
-    //     }
-    //   });
+    this.id = 6;
+
+    // this.activated.params.subscribe((prm) => {
+    //   this.id = prm['id'];
     // });
 
-    
+  }
+
+  ngOnInit(): void {
+    this.activated.snapshot.paramMap.get('id')
+
+    this.mortyService.getCharacter(this.id).subscribe((data) => {
+      this.character = data
+    });
+
+    // this.mortyService.getPersonajes().subscribe((resp: any) => {
+    //   this.rick = resp
+    //     .filter(({ id }: { id: number }) => {
+    //       if (id >= 6) {
+    //         return true;
+    //       } else {
+    //         return false;
+    //       }
+    //     })
+    //     .sort(() => (Math.random() > 0.5 ? 1 : -1))
+    //     .slice(0, 3);
+    // });
   }
 
   listarEp(inicio: string, final: string) {
     let n = Number(inicio);
     let m = Number(final);
+   
 
-    if (!Number.isNaN(n) && n > 0 && !Number.isNaN(m) && m > 0) {
+    if (!Number.isNaN(n) && n > 0 && !Number.isNaN(m) && m > 0)  {
       if (n > m) {
         [n, m] = [m, n];
       }
@@ -53,6 +68,7 @@ export class MortyListComponent implements OnInit {
               nombre: episodio.name,
               emision: episodio.air_date,
               temporada: episodio.episode,
+
               personajes: episodio.characters
                 .sort(() => (Math.random() > 0.5 ? 1 : -1))
                 .slice(6, 9),
@@ -64,9 +80,8 @@ export class MortyListComponent implements OnInit {
     }
   }
 
-  
-
   getDeatlles() {
-    this.route.navigateByUrl(`detalles/`);
+
+    this.route.navigateByUrl(`detalles/${this.id}`);
   }
 }

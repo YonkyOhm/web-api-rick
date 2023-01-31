@@ -15,8 +15,10 @@ export class ApiServiceService {
 
   getEpisodiosInRange(n: number, m: number) {
     let range = '';
+   
     for (let i = n; i <= m; i++) {
       range += `${i},`;
+      
     }
     return this.http.get<AllEpisodeRespon>(`${this.url}/${range}`);
     //.pipe(map(this.transformIntoCharecter));
@@ -24,7 +26,7 @@ export class ApiServiceService {
 
   getPersonajes() {
     return this.http
-      .get<AllPersonajesRespon>(this.urlP)
+      .get<AllPersonajesRespon>(`${this.urlP}/`)
       .pipe(map(this.transformIntoCharecter));
   }
 
@@ -48,7 +50,9 @@ export class ApiServiceService {
     return rickList;
   }
   
-  public getCharacter(id: number) {
-    return this.http.get('https://rickandmortyapi.com/api/character/' + id);
+  getCharacter(id: number) {
+    return this.http.get(`https://rickandmortyapi.com/api/character/${id}`);
   }
+
+
 }
