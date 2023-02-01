@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from 'src/app/services/api-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Character, Result } from 'src/app/interfaces/episodios';
+import { AllPersonajesRespon, ResultP } from 'src/app/interfaces/personajes';
 
 @Component({
   selector: 'app-morty-list',
@@ -11,7 +12,8 @@ import { Character, Result } from 'src/app/interfaces/episodios';
 export class MortyListComponent implements OnInit {
   morty: Array<any>;
   rick: Array<any>;
-  
+
+  personaje: string
   id: number;
   character: any = [];
 
@@ -22,58 +24,63 @@ export class MortyListComponent implements OnInit {
   ) {
     this.morty = [];
     this.rick = [];
-    this.id = 6;
-
-    // this.activated.params.subscribe((prm) => {
-    //   this.id = prm['id'];
-    // });
-
+    this.id = 56;
+    this.personaje = ''
   }
 
   ngOnInit(): void {
-    this.activated.snapshot.paramMap.get('id')
-
-    this.mortyService.getCharacter(this.id).subscribe((data) => {
-      this.character = data
-    });
-
-    // this.mortyService.getPersonajes().subscribe((resp: any) => {
-    //   this.rick = resp
-    //     .filter(({ id }: { id: number }) => {
-    //       if (id >= 6) {
-    //         return true;
-    //       } else {
-    //         return false;
-    //       }
-    //     })
-    //     .sort(() => (Math.random() > 0.5 ? 1 : -1))
-    //     .slice(0, 3);
+    // this.activated.params.subscribe((prm) => {
+    //   this.id = prm['id'];
     // });
+    //this.activated.snapshot.paramMap.get('id')
+    // this.mortyService.getData().subscribe(
+    //   (data:any) => {
+    //     this.character = data
+    // });
+    // this.mortyService.getCharacter(this.id).subscribe((data) => {
+    //   this.character = data['results']
+    // });
+    this.mortyService.getPersonajes().subscribe((resp: any) => {
+      this.rick = resp
+        .filter(({ id }: { id: number }) => id >= 6)
+        // .map((personaje: ResultP)=>{
+        //   return{
+        //     id: personaje.id,
+        //     name: personaje.name,
+        //     status: personaje.status,
+        //     species: personaje.species,
+        //     gender: personaje.gender,
+        //     image: personaje.image
+        //   }
+        // })
+        .sort(() => (Math.random() > 0.5 ? 1 : -1))
+        .slice(0, 3);
+    });
   }
 
   listarEp(inicio: string, final: string) {
     let n = Number(inicio);
     let m = Number(final);
-   
 
-    if (!Number.isNaN(n) && n > 0 && !Number.isNaN(m) && m > 0)  {
+    if (!Number.isNaN(n) && n > 0 && !Number.isNaN(m) && m > 0) {
       if (n > m) {
         [n, m] = [m, n];
       }
       this.mortyService.getEpisodiosInRange(n, m).subscribe(
         (resp: any) => {
-          this.morty = resp.map((episodio: Result) => {
+          
+          this.morty = resp
+          .map((episodio: Result) => {
             return {
               id: episodio.id,
-              nombre: episodio.name,
-              emision: episodio.air_date,
-              temporada: episodio.episode,
-
-              personajes: episodio.characters
+              name: episodio.name,
+              air_date: episodio.air_date,
+              episode: episodio.episode,
+              characters: episodio.characters
                 .sort(() => (Math.random() > 0.5 ? 1 : -1))
                 .slice(6, 9),
             };
-          });
+          });   
         },
         (err) => {}
       );
@@ -81,7 +88,6 @@ export class MortyListComponent implements OnInit {
   }
 
   getDeatlles() {
-
     this.route.navigateByUrl(`detalles/${this.id}`);
   }
 }

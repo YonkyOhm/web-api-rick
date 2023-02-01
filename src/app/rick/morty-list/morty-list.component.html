@@ -10,12 +10,13 @@
 		<ul class="team">
 			<li class="member co-funder" *ngFor="let episodio of morty">
 				<div class="description">
-					<h3>{{episodio.id}}, {{episodio.nombre}}</h3>
-					<p>{{episodio.emision}}</p>
-					<p>{{episodio.temporada}}</p>
-					<p>{{episodio.personajes}}</p>
+					<h3>{{episodio.id}}, {{episodio.name}}</h3>
+					<p>{{episodio.air_date}}</p>
+					<p>{{episodio.episode}}</p>
+					<p>{{episodio.characters}}</p>
+					<p>{{episodio.pic}}</p>
 					<div class="card-body">
-						<button (click)="getDeatlles()">mas informacion</button>
+						<button (click)="getDeatlles()">Informacion del personaje</button>
 					</div>
 				</div>			 
 			</li>
@@ -41,6 +42,8 @@
 	</ul>
 
 </div>
+
+
 
 <!-- <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4"

@@ -17,6 +17,7 @@ export class DetallesComponent implements OnInit {
   
   constructor(private service: ApiServiceService, private route: Router, private activated: ActivatedRoute) {
     this.id = 0
+    
     activated.params.subscribe((prm) => {
       this.id = prm['id'];
     });

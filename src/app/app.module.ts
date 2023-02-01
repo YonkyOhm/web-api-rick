@@ -11,11 +11,14 @@ import { DetallesComponent } from './components/detalles/detalles.component';
 import { FormsModule } from '@angular/forms';
 import { RickModule } from './rick/rick.module';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     ObjToArrayPipe,
     DetallesComponent,
+    
   ],
   imports: [
     BrowserModule,
