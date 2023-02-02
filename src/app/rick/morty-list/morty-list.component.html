@@ -13,7 +13,7 @@
 					<h3>{{episodio.id}}, {{episodio.name}}</h3>
 					<p>{{episodio.air_date}}</p>
 					<p>{{episodio.episode}}</p>
-					<p>{{episodio.characters}}</p>
+					<p>{{episodio.character}}</p>
 					<p>{{episodio.pic}}</p>
 					<div class="card-body">
 						<button (click)="getDeatlles()">Informacion del personaje</button>
@@ -33,8 +33,8 @@
 		<li class="member co-funder" *ngFor="let personaje of rick ">
 			<div class="thumb"><img [src]="personaje.pic"></div>
 			<div class="description">
-				<h3>{{personaje.name}}</h3>
-				<p>{{personaje.id}}</p>
+				<h3>{{personaje.id}}</h3>
+				<p>{{personaje.name}}</p>
 				<p>Si quieres mas informacion del personaje solo da click en el boton<br><button 
 						(click)="getDeatlles()">Mas informacion</button></p>
 			</div>

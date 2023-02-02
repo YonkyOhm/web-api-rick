@@ -13,9 +13,11 @@ export class MortyListComponent implements OnInit {
   morty: Array<any>;
   rick: Array<any>;
 
-  personaje: string
-  id: number;
+  id: string[];
   character: any = [];
+
+
+  personaje: Array<any>
 
   constructor(
     private mortyService: ApiServiceService,
@@ -24,15 +26,18 @@ export class MortyListComponent implements OnInit {
   ) {
     this.morty = [];
     this.rick = [];
-    this.id = 56;
-    this.personaje = ''
+    this.id = [];
+
+   
+    this.personaje = []
   }
 
   ngOnInit(): void {
     // this.activated.params.subscribe((prm) => {
     //   this.id = prm['id'];
     // });
-    //this.activated.snapshot.paramMap.get('id')
+    // this.activated.snapshot.paramMap.get('id')
+    
     // this.mortyService.getData().subscribe(
     //   (data:any) => {
     //     this.character = data
@@ -40,22 +45,22 @@ export class MortyListComponent implements OnInit {
     // this.mortyService.getCharacter(this.id).subscribe((data) => {
     //   this.character = data['results']
     // });
-    this.mortyService.getPersonajes().subscribe((resp: any) => {
-      this.rick = resp
-        .filter(({ id }: { id: number }) => id >= 6)
-        // .map((personaje: ResultP)=>{
-        //   return{
-        //     id: personaje.id,
-        //     name: personaje.name,
-        //     status: personaje.status,
-        //     species: personaje.species,
-        //     gender: personaje.gender,
-        //     image: personaje.image
-        //   }
-        // })
-        .sort(() => (Math.random() > 0.5 ? 1 : -1))
-        .slice(0, 3);
-    });
+    //   this.mortyService.getPersonajes().subscribe((resp: any) => {
+    //     this.rick = resp
+    //       .filter(({ id }: { id: number }) => id >= 6)
+    //       // .map((personaje: ResultP)=>{
+    //       //   return{
+    //       //     id: personaje.id,
+    //       //     name: personaje.name,
+    //       //     status: personaje.status,
+    //       //     species: personaje.species,
+    //       //     gender: personaje.gender,
+    //       //     image: personaje.image
+    //       //   }
+    //       // })
+    //       .sort(() => (Math.random() > 0.5 ? 1 : -1))
+    //       .slice(0, 3);
+    //   });
   }
 
   listarEp(inicio: string, final: string) {
@@ -68,23 +73,33 @@ export class MortyListComponent implements OnInit {
       }
       this.mortyService.getEpisodiosInRange(n, m).subscribe(
         (resp: any) => {
-          
-          this.morty = resp
-          .map((episodio: Result) => {
+          let morty = resp.map((episodio: Result) => {
             return {
               id: episodio.id,
               name: episodio.name,
               air_date: episodio.air_date,
               episode: episodio.episode,
-              characters: episodio.characters
+              character: episodio.characters
                 .sort(() => (Math.random() > 0.5 ? 1 : -1))
-                .slice(6, 9),
+                .slice(6,9),
             };
-          });   
+          });
+          this.morty = morty
+          console.log(morty)
         },
         (err) => {}
       );
     }
+
+    this.mortyService.getPersonajes(n, m).subscribe(
+      (resp: any) => {
+        this.rick = resp
+          .filter(({ id }: { id: number }) => id >= 6)
+          .sort(() => (Math.random() > 0.5 ? 1 : -1))
+          .slice(0, 3);
+      },
+      (err) => {}
+    );
   }
 
   getDeatlles() {
